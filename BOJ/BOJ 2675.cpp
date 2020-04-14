@@ -14,8 +14,7 @@ int main(void)
     {
         cin >> R;
         cin >> P;
-        int size = P.size();
-
+        int size = P.length();
         for (int j = 0; j < size; j++)
         {
             for (int k = 0; k < R; k++)

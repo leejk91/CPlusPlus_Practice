@@ -41,7 +41,7 @@ int main(void)
 
     }
 
-    cout << second <<"\n";
+    cout << second << "\n";
 
     return 0;
 }

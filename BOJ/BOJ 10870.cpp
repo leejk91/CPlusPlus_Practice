@@ -3,7 +3,7 @@ using namespace std;
 
 //백준 10870: 피보나치 수 5
 
-int sum[21] = { 0,1, }; // 피보나치 수는 0, 1부터 시작
+int sum[21] = { 0,1, }; // 피보나치 수열를 저장할 배열
 int N = 0; // 찾는 위치를 저장
 
 void fibo(int n) 

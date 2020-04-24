@@ -17,20 +17,20 @@ void Sort(int* arr)
     int i, j;
     int temp;
 
-    for (i = 1; i < N; i++)
+    for (i = 1; i < N; i++) // 앞의 원소와 비교하기 위해서 두번째 배열부터 시작
     {
-        temp = arr[i];
-        for (j = i - 1; j >= 0; j--)
+        temp = arr[i]; // i의 값을 비교하기 위해 임시 저장
+        for (j = i - 1; j >= 0; j--) 
         {
-            if (arr[j] > temp)
+            if (arr[j] > temp) // 앞의 값과 비교 한다.
             {
-                arr[j + 1] = arr[j];
+                arr[j + 1] = arr[j]; // 앞의 값이 크다면 이동
             }
             else
-                break;
+                break; // 작다면 루프에서 빠져나온다
 
         }
-        arr[j + 1] = temp;
+        arr[j + 1] = temp; // 앞의 값에 임시 값을 넣는다.
     }
 }
 
@@ -39,19 +39,19 @@ int main() {
 
     setting();
 
-    cin >> N;
+    cin >> N; // 숫자 갯수 입력
 
     int* K = new int[N];
 
     for (int i = 0; i < N; i++)
     {
-        cin >> K[i];
+        cin >> K[i]; // 배열 입력
     }
 
-    Sort(K);
+    Sort(K); // 정렬 함수 시작
 
     for (int i = 0; i < N; i++)
     {
-        cout << K[i] << "\n";
+        cout << K[i] << "\n"; // 배열 출력
     }
 }

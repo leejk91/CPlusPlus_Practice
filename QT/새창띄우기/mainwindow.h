@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTreeWidget>
 #include "dialog.h"
 
 namespace Ui {
@@ -21,6 +22,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
+    QTreeWidget* tree = new QTreeWidget();
+    //Dialog *Dialog; 방법2
 };
 
 #endif // MAINWINDOW_H

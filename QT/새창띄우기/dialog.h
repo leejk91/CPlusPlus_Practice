@@ -2,6 +2,7 @@
 #define DIALOG_H
 
 #include <QDialog>
+#include <QLabel>
 
 namespace Ui {
 class Dialog;

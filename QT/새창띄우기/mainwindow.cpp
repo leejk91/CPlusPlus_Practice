@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->treeWidget->setColumnCount(HEAD); // 항목 개수 설정
 
     ui->treeWidget->setHeaderLabels(QStringList() << "제품" << "가격" << "상태");
+
 }
 
 MainWindow::~MainWindow()
@@ -22,10 +23,14 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
+    //int value = 100;
+
     Dialog Dialog;
     Dialog.setModal(true);
+    //connect(this,SIGNAL(send_value(QString A,int B,int C)),this,recv_velue(QString A,int B,int C));
+    //emit send_value(value);
     Dialog.exec();
 
-    // Dia_log = new Dialog(this); 방법2
-    // Dia_log->show(); 방법2
+    // Dia_log = new Dialog(this); 새창 띄우는 방법2
+    // Dia_log->show(); 새창 띄우는 방법 방법2
 }

@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QLabel>
+#include <QTreeWidgetItem>
 
 namespace Ui {
 class Dialog;
@@ -15,6 +16,9 @@ class Dialog : public QDialog
 public:
     explicit Dialog(QWidget *parent = nullptr);
     ~Dialog();
+
+private slots:
+    void on_pushButton_clicked();
 
 private:
     Ui::Dialog *ui;

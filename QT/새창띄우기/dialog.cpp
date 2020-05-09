@@ -13,3 +13,7 @@ Dialog::~Dialog()
 {
     delete ui;
 }
+
+void Dialog::on_pushButton_clicked()
+{
+}

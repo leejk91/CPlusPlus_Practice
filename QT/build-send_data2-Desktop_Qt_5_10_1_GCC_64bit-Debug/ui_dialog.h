@@ -15,18 +15,28 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_Dialog
 {
 public:
+    QPushButton *pushButton;
+    QLineEdit *lineEdit;
 
     void setupUi(QDialog *Dialog)
     {
         if (Dialog->objectName().isEmpty())
             Dialog->setObjectName(QStringLiteral("Dialog"));
         Dialog->resize(400, 300);
+        pushButton = new QPushButton(Dialog);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(140, 180, 89, 25));
+        lineEdit = new QLineEdit(Dialog);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        lineEdit->setGeometry(QRect(130, 120, 113, 25));
 
         retranslateUi(Dialog);
 
@@ -36,6 +46,7 @@ public:
     void retranslateUi(QDialog *Dialog)
     {
         Dialog->setWindowTitle(QApplication::translate("Dialog", "Dialog", nullptr));
+        pushButton->setText(QApplication::translate("Dialog", "PushButton", nullptr));
     } // retranslateUi
 
 };

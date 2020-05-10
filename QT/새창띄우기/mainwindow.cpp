@@ -21,12 +21,6 @@ MainWindow::MainWindow(QWidget *parent) :
     treeItem->setText(2, "Start3");
 
 
-    QTreeWidgetItem *treeItem2 = new QTreeWidgetItem(ui->treeWidget);
-
-    treeItem2->setText(0, "Start4");
-    treeItem2->setText(1, "Start5");
-    treeItem2->setText(2, "Start6");
-
 
 }
 

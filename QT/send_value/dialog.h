@@ -2,8 +2,6 @@
 #define DIALOG_H
 
 #include <QDialog>
-#include <QLabel>
-#include <QTreeWidgetItem>
 #include <QDebug>
 
 namespace Ui {
@@ -17,19 +15,21 @@ class Dialog : public QDialog
 public:
     explicit Dialog(QWidget *parent = nullptr);
     ~Dialog();
-    QString name;
-    int value;
-    int state;
+    int value1;
+    int value2;
+    int result_value;
 
-signals:
-    void send_value(QString A,int B,int C);
+
 
 public slots:
+    void recv_value(int value)
+    {
+        value1=value;
+    }
+
 
 private slots:
     void on_pushButton_clicked();
-
-    void on_pushButton_2_clicked();
 
 private:
     Ui::Dialog *ui;

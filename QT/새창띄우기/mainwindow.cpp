@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->treeWidget->setColumnCount(HEAD); // 항목 개수 설정
 
-    ui->treeWidget->setHeaderLabels(QStringList() << "제품" << "가격" << "상태");
+    ui->treeWidget->setHeaderLabels(QStringList() << "제품" << "가격" << "상태"); // 항목 이름 설정
 
     recv_value("TEST",100,20);
 

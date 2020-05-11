@@ -6,8 +6,6 @@
 #include <QTreeWidgetItem>
 #include <QDebug>
 
-#include <QMainWindow>
-#include <QTreeWidget>
 
 namespace Ui {
 class Dialog;

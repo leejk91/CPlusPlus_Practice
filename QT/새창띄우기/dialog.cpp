@@ -10,8 +10,6 @@ Dialog::Dialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    connect(this,SIGNAL(send_value(QString,int,int)),QMainWindow(),SLOT(recv_value(QString,int,int)));
-
 }
 
 Dialog::~Dialog()
@@ -30,6 +28,9 @@ void Dialog::on_pushButton_clicked()
     qDebug() << "n: "<< name << "v: " << value << "s: " << state;
 
     emit send_value(name,value,state);
+
+    //connect(this,SIGNAL(send_value(QString,int,int)),,SLOT(recv_value(QString,int,int)));
+
 
     this->close();
 }

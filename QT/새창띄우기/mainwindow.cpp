@@ -14,11 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->treeWidget->setHeaderLabels(QStringList() << "제품" << "가격" << "상태");
 
-    QTreeWidgetItem *treeItem = new QTreeWidgetItem(ui->treeWidget);
-
-    treeItem->setText(0, "Start");
-    treeItem->setText(1, "Start2");
-    treeItem->setText(2, "Start3");
+    recv_value("TEST",100,20);
 
 
 
@@ -54,11 +50,13 @@ void MainWindow::recv_value(QString A,int B,int C)
 
 
     treeItem->setText(0, A);
+
     QString value;
     value.setNum(B);
     treeItem->setText(1, value);
+
     QString value2;
-    value.setNum(C);
+    value2.setNum(C);
     treeItem->setText(2, value2);
 
 }

@@ -51,12 +51,16 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../MyMaru/main.cpp \
-		../MyMaru/maindialog.cpp qrc_images.cpp \
-		moc_maindialog.cpp
+		../MyMaru/maindialog.cpp \
+		../MyMaru/admin.cpp qrc_images.cpp \
+		moc_maindialog.cpp \
+		moc_admin.cpp
 OBJECTS       = main.o \
 		maindialog.o \
+		admin.o \
 		qrc_images.o \
-		moc_maindialog.o
+		moc_maindialog.o \
+		moc_admin.o
 DIST          = /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/common/unix.conf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/common/linux.conf \
@@ -240,8 +244,10 @@ DIST          = /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/exceptions.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/yacc.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/lex.prf \
-		../MyMaru/MyMaru.pro ../MyMaru/maindialog.h ../MyMaru/main.cpp \
-		../MyMaru/maindialog.cpp
+		../MyMaru/MyMaru.pro ../MyMaru/maindialog.h \
+		../MyMaru/admin.h ../MyMaru/main.cpp \
+		../MyMaru/maindialog.cpp \
+		../MyMaru/admin.cpp
 QMAKE_TARGET  = MyMaru
 DESTDIR       = 
 TARGET        = MyMaru
@@ -250,7 +256,7 @@ TARGET        = MyMaru
 first: all
 ####### Build rules
 
-$(TARGET): ui_maindialog.h $(OBJECTS)  
+$(TARGET): ui_maindialog.h ui_admin.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../MyMaru/MyMaru.pro /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++/qmake.conf /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/spec_pre.prf \
@@ -646,9 +652,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../MyMaru/images.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../MyMaru/maindialog.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../MyMaru/main.cpp ../MyMaru/maindialog.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../MyMaru/maindialog.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../MyMaru/maindialog.h ../MyMaru/admin.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../MyMaru/main.cpp ../MyMaru/maindialog.cpp ../MyMaru/admin.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../MyMaru/maindialog.ui ../MyMaru/admin.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -677,6 +683,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_images.cpp
 qrc_images.cpp: ../MyMaru/images.qrc \
 		/home/bruce/Qt5/5.10.1/gcc_64/bin/rcc \
+		../MyMaru/Images/insert.png \
 		../MyMaru/Images/Setting.png
 	/home/bruce/Qt5/5.10.1/gcc_64/bin/rcc -name images ../MyMaru/images.qrc -o qrc_images.cpp
 
@@ -686,9 +693,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_maindialog.cpp
+compiler_moc_header_make_all: moc_maindialog.cpp moc_admin.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_maindialog.cpp
+	-$(DEL_FILE) moc_maindialog.cpp moc_admin.cpp
 moc_maindialog.cpp: /home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QDialog \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qdialog.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -793,21 +800,136 @@ moc_maindialog.cpp: /home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QDialog \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qfiledevice.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qvector2d.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtouchdevice.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/QDebug \
+		../MyMaru/admin.h \
 		../MyMaru/maindialog.h \
 		moc_predefs.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/bin/moc
 	/home/bruce/Qt5/5.10.1/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++ -I/mnt/hgfs/Practice/Practice/QT/MyMaru -I/home/bruce/Qt5/5.10.1/gcc_64/include -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../MyMaru/maindialog.h -o moc_maindialog.cpp
 
+moc_admin.cpp: /home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QDialog \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qdialog.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qglobal.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qconfig.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qtcore-config.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsysinfo.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qlogging.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qflags.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qatomic.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qmutex.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qnumeric.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qversiontagging.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtgui-config.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qwidget.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qnamespace.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qobject.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstring.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qchar.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qbytearray.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qrefcount.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qarraydata.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringliteral.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringview.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qlist.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qalgorithms.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qiterator.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qpair.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringlist.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qregexp.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcoreevent.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qmetatype.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qobject_impl.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qmargins.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qrect.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsize.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qpoint.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpalette.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qcolor.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qrgb.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qrgba64.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qbrush.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qvector.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qmatrix.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpolygon.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qregion.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qdatastream.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qiodevice.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qline.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtransform.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpainterpath.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qimage.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpixelformat.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpixmap.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qshareddata.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qhash.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qfont.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qfontinfo.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qcursor.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qkeysequence.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qevent.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qvariant.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qmap.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qdebug.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qtextstream.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qlocale.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qset.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qurl.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qurlquery.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qfile.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qfiledevice.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qvector2d.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtouchdevice.h \
+		../MyMaru/admin.h \
+		moc_predefs.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/bin/moc
+	/home/bruce/Qt5/5.10.1/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++ -I/mnt/hgfs/Practice/Practice/QT/MyMaru -I/home/bruce/Qt5/5.10.1/gcc_64/include -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../MyMaru/admin.h -o moc_admin.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_maindialog.h
+compiler_uic_make_all: ui_maindialog.h ui_admin.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_maindialog.h
+	-$(DEL_FILE) ui_maindialog.h ui_admin.h
 ui_maindialog.h: ../MyMaru/maindialog.ui \
 		/home/bruce/Qt5/5.10.1/gcc_64/bin/uic
 	/home/bruce/Qt5/5.10.1/gcc_64/bin/uic ../MyMaru/maindialog.ui -o ui_maindialog.h
+
+ui_admin.h: ../MyMaru/admin.ui \
+		/home/bruce/Qt5/5.10.1/gcc_64/bin/uic
+	/home/bruce/Qt5/5.10.1/gcc_64/bin/uic ../MyMaru/admin.ui -o ui_admin.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -924,6 +1046,8 @@ main.o: ../MyMaru/main.cpp ../MyMaru/maindialog.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qfiledevice.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qvector2d.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtouchdevice.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/QDebug \
+		../MyMaru/admin.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QApplication \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qapplication.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1038,6 +1162,8 @@ maindialog.o: ../MyMaru/maindialog.cpp ../MyMaru/maindialog.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qfiledevice.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qvector2d.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtouchdevice.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/QDebug \
+		../MyMaru/admin.h \
 		ui_maindialog.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/QVariant \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QAction \
@@ -1075,14 +1201,135 @@ maindialog.o: ../MyMaru/maindialog.cpp ../MyMaru/maindialog.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qlabel.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QPushButton \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qpushbutton.h \
-		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qabstractbutton.h
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qabstractbutton.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QTreeWidget \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtreewidget.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtreeview.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtreewidgetitemiterator.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QVBoxLayout \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qboxlayout.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qlayout.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qgridlayout.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o maindialog.o ../MyMaru/maindialog.cpp
+
+admin.o: ../MyMaru/admin.cpp ../MyMaru/admin.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QDialog \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qdialog.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qglobal.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qconfig.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qtcore-config.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsysinfo.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qlogging.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qflags.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qatomic.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qmutex.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qnumeric.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qversiontagging.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtgui-config.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qwidget.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qnamespace.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qobject.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstring.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qchar.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qbytearray.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qrefcount.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qarraydata.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringliteral.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringview.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qlist.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qalgorithms.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qiterator.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qpair.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringlist.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qregexp.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcoreevent.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qmetatype.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qobject_impl.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qmargins.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qrect.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsize.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qpoint.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpalette.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qcolor.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qrgb.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qrgba64.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qbrush.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qvector.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qmatrix.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpolygon.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qregion.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qdatastream.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qiodevice.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qline.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtransform.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpainterpath.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qimage.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpixelformat.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpixmap.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qshareddata.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qhash.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qfont.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qfontinfo.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qcursor.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qkeysequence.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qevent.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qvariant.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qmap.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qdebug.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qtextstream.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qlocale.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qset.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qurl.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qurlquery.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qfile.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qfiledevice.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qvector2d.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtouchdevice.h \
+		ui_admin.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o admin.o ../MyMaru/admin.cpp
 
 qrc_images.o: qrc_images.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_images.o qrc_images.cpp
 
 moc_maindialog.o: moc_maindialog.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_maindialog.o moc_maindialog.cpp
+
+moc_admin.o: moc_admin.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_admin.o moc_admin.cpp
 
 ####### Install
 

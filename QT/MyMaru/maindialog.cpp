@@ -10,6 +10,10 @@ MainDialog::MainDialog(QWidget *parent) :
 
     ui->setupUi(this);
 
+    ui->label->setStyleSheet("QLabel{font:bold 28px; color:white; background-color:#444444}");
+    ui->label_2->setStyleSheet("QLabel{font:bold 28px; color:white; background-color:#444444}");
+
+
 }
 
 MainDialog::~MainDialog()
@@ -17,3 +21,11 @@ MainDialog::~MainDialog()
     delete ui;
 }
 
+
+void MainDialog::on_pushButton_clicked()
+{
+    admin = new Admin(this);
+    admin->show();
+
+    qDebug() << "관리자 로그인 입장";
+}

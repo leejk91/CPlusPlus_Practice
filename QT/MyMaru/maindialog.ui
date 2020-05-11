@@ -14,76 +14,114 @@
    <string>MainDialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">#MainDialog{
+   <string notr="true">#MainDialog
+{
 
 	background-color : #444444;
 
 }</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>781</width>
-     <height>141</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Admin</string>
-   </property>
-  </widget>
-  <widget class="QTreeWidget" name="treeWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>740</y>
-     <width>781</width>
-     <height>381</height>
-    </rect>
-   </property>
-   <column>
-    <property name="text">
-     <string notr="true">1</string>
-    </property>
-   </column>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>200</x>
-     <y>220</y>
-     <width>281</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>신용카드를 카드리더에 밀어 넣어주세요.</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>200</x>
-     <y>200</y>
-     <width>251</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">#label
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
+    <widget class="QPushButton" name="pushButton">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>750</width>
+       <height>120</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>Admin</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="font">
+        <font>
+         <pointsize>28</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">#label
 {
-	font: bold italic 10px;
-	color: white;
+	color: rgb(238, 238, 236);
+	font: 57 13pt &quot;Ubuntu&quot;;
 }
 </string>
-   </property>
-   <property name="text">
-    <string>상품을 구매 하시려면 하단의 그림과 같이</string>
-   </property>
-  </widget>
+       </property>
+       <property name="text">
+        <string>상품을 구매 하시려면 하단의 그림과 같이</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <pointsize>28</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>신용카드를 카드리더에 밀어 넣어주세요.</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>400</width>
+       <height>200</height>
+      </size>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="images.qrc">:/new/prefix1/Images/insert.png</pixmap>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTreeWidget" name="treeWidget">
+     <column>
+      <property name="text">
+       <string notr="true">1</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections/>
 </ui>

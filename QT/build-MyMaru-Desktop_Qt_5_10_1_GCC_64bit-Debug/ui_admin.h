@@ -32,9 +32,9 @@ public:
     QLabel *label;
     QLineEdit *lineEdit;
     QHBoxLayout *horizontalLayout;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton_3;
     QPushButton *pushButton_2;
+    QPushButton *pushButton_3;
+    QPushButton *pushButton_4;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *pushButton_5;
     QPushButton *pushButton_6;
@@ -80,11 +80,11 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        pushButton_4 = new QPushButton(verticalLayoutWidget);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
-        pushButton_4->setMinimumSize(QSize(0, 135));
+        pushButton_2 = new QPushButton(verticalLayoutWidget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setMinimumSize(QSize(0, 135));
 
-        horizontalLayout->addWidget(pushButton_4);
+        horizontalLayout->addWidget(pushButton_2);
 
         pushButton_3 = new QPushButton(verticalLayoutWidget);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
@@ -92,11 +92,11 @@ public:
 
         horizontalLayout->addWidget(pushButton_3);
 
-        pushButton_2 = new QPushButton(verticalLayoutWidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setMinimumSize(QSize(0, 135));
+        pushButton_4 = new QPushButton(verticalLayoutWidget);
+        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+        pushButton_4->setMinimumSize(QSize(0, 135));
 
-        horizontalLayout->addWidget(pushButton_2);
+        horizontalLayout->addWidget(pushButton_4);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -180,9 +180,9 @@ public:
     {
         Admin->setWindowTitle(QApplication::translate("Admin", "Dialog", nullptr));
         label->setText(QApplication::translate("Admin", "\352\264\200\353\246\254\354\236\220 \353\241\234\352\267\270\354\235\270", nullptr));
-        pushButton_4->setText(QApplication::translate("Admin", "1", nullptr));
+        pushButton_2->setText(QApplication::translate("Admin", "1", nullptr));
         pushButton_3->setText(QApplication::translate("Admin", "2", nullptr));
-        pushButton_2->setText(QApplication::translate("Admin", "3", nullptr));
+        pushButton_4->setText(QApplication::translate("Admin", "3", nullptr));
         pushButton_5->setText(QApplication::translate("Admin", "4", nullptr));
         pushButton_6->setText(QApplication::translate("Admin", "5", nullptr));
         pushButton_7->setText(QApplication::translate("Admin", "6", nullptr));

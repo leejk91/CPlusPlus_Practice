@@ -17,7 +17,6 @@ MainWindow::MainWindow(QWidget *parent) :
     recv_value("TEST",100,20);
 
 
-
 }
 
 MainWindow::~MainWindow()
@@ -27,26 +26,21 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    //int value = 100;
 
-    Dialog Dialog;
-    Dialog.setModal(true);
-    Dialog.exec();
+    Dia_log = new Dialog(this);
+    Dia_log->show();
 
-    // Dia_log = new Dialog(this); 새창 띄우는 방법2
-    // Dia_log->show(); 새창 띄우는 방법 방법2
     qDebug() << "입력창 오픈";
+
 
 }
 
-void MainWindow::recv_value(QString A,int B,int C)
+void MainWindow::recv_value(QString A,int B,int C) // 삽입
 {
 
     qDebug() << "A: "<< A << "B: " << B << "C: " << C;
 
     QTreeWidgetItem *treeItem = new QTreeWidgetItem(ui->treeWidget);
-
-    ui->label->setText(A);
 
 
     treeItem->setText(0, A);
@@ -58,5 +52,13 @@ void MainWindow::recv_value(QString A,int B,int C)
     QString value2;
     value2.setNum(C);
     treeItem->setText(2, value2);
+
+}
+
+
+void MainWindow::on_pushButton_3_clicked() // 삭제
+{
+
+    delete ui->treeWidget->currentItem();
 
 }

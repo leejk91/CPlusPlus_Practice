@@ -2,10 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QTreeWidget>
-
+#include <QLineEdit>
 #include "dialog.h"
-#include <QDebug>
 
 namespace Ui {
 class MainWindow;
@@ -20,22 +18,15 @@ public:
     ~MainWindow();
 
 public slots:
+    void recData(QString str);
 
-    void recv_value(QString A,int B,int C);
 
 private slots:
     void on_pushButton_clicked();
 
-
-    void on_pushButton_3_clicked();
-
 private:
     Ui::MainWindow *ui;
-
-    Dialog *Dia_log; //새창
-
-
-
+    Dialog *dlg;
 };
 
 #endif // MAINWINDOW_H

@@ -1,8 +1,6 @@
 #include "dialog.h"
 #include "ui_dialog.h"
 
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
 
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
@@ -27,12 +25,12 @@ void Dialog::on_pushButton_clicked()
 
     qDebug() << "n: "<< name << "v: " << value << "s: " << state;
 
+    connect(this,SIGNAL(send_value(QString,int,int)),parent(),SLOT(recv_value(QString,int,int)));
+
     emit send_value(name,value,state);
 
-    //connect(this,SIGNAL(send_value(QString,int,int)),,SLOT(recv_value(QString,int,int)));
-
-
     this->close();
+
 }
 
 

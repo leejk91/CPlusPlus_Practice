@@ -115,7 +115,11 @@ void MainWindow::on_pushButton_4_clicked()
 
 void MainWindow::on_actionNew_Window_triggered()
 {
-    MyDialog mDialog;
-    mDialog.setModal(true);
-    mDialog.exec();
+    //MyDialog mDialog;
+    //mDialog.setModal(true);
+    //mDialog.exec();
+
+    mDialog = new MyDialog(this);
+    mDialog -> show();
+
 }

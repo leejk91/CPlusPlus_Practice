@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "mydialog.h"
 
 bool A = false;
 int type = 0;
@@ -23,6 +24,9 @@ MainWindow::MainWindow(QWidget *parent) :
     stimer = new QTimer;
     connect(stimer, SIGNAL(timeout()), this, SLOT(on_stimeout()));
 
+    sstimer = new QTimer;
+    connect(sstimer, SIGNAL(timeout()), this, SLOT(on_sstimeout()));
+
 
 
 
@@ -44,6 +48,7 @@ void MainWindow::on_pushButton_2_clicked()
 {
     timer->stop();
     stimer->stop();
+    sstimer->stop();
 }
 
 void MainWindow::on_timeout()
@@ -61,15 +66,31 @@ void MainWindow::on_timeout()
 }
 void MainWindow::on_stimeout()
 {
-    QRect rect = ui->label->geometry();
-    if(type == 1)
-    {
-    ui->label->setGeometry(rect.x() , rect.y(), rect.width()-10, rect.height());
-    }
-    if(type == 2)
-    {
-    ui->label->setGeometry(rect.x() , rect.y(), rect.width()+10, rect.height());
-    }
+    int x = ui->label->geometry().x();
+    int y = ui->label->geometry().y();
+
+    if(x>-300)
+        ui->label->move(x-1,y);
+    else
+        ui->label->move(615,y);
+
+    //QRect rect = ui->label->geometry();
+    //ui->label->setGeometry(rect.x() , rect.y(), rect.width()-10, rect.height());
+
+
+
+}
+
+void MainWindow::on_sstimeout()
+{
+
+    int x = ui->label->geometry().x();
+    int y = ui->label->geometry().y();
+
+    if(y>-50)
+        ui->label->move(x,y-1);
+    else
+        ui->label->move(x,470);
 
 }
 
@@ -78,15 +99,23 @@ void MainWindow::on_stimeout()
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    type=2;
+    QString A = ui->label->text().prepend("prepend");
+    ui->label->setText(A);
 }
 
 void MainWindow::on_pushButton_5_clicked()
 {
-
+    sstimer->start(50);
 }
 
 void MainWindow::on_pushButton_4_clicked()
 {
+    timer->start(50);
+}
 
+void MainWindow::on_actionNew_Window_triggered()
+{
+    MyDialog mDialog;
+    mDialog.setModal(true);
+    mDialog.exec();
 }

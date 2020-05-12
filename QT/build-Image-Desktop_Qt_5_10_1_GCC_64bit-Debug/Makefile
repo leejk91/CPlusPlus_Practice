@@ -51,10 +51,14 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../Image/main.cpp \
-		../Image/mainwindow.cpp moc_mainwindow.cpp
+		../Image/mainwindow.cpp \
+		../Image/mydialog.cpp moc_mainwindow.cpp \
+		moc_mydialog.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		moc_mainwindow.o
+		mydialog.o \
+		moc_mainwindow.o \
+		moc_mydialog.o
 DIST          = /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/common/unix.conf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/common/linux.conf \
@@ -218,6 +222,7 @@ DIST          = /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/qt_config.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/spec_post.prf \
+		../Image/.qmake.stash \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/toolchain.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -237,8 +242,10 @@ DIST          = /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/exceptions.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/yacc.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/lex.prf \
-		../Image/Image.pro ../Image/mainwindow.h ../Image/main.cpp \
-		../Image/mainwindow.cpp
+		../Image/Image.pro ../Image/mainwindow.h \
+		../Image/mydialog.h ../Image/main.cpp \
+		../Image/mainwindow.cpp \
+		../Image/mydialog.cpp
 QMAKE_TARGET  = Image
 DESTDIR       = 
 TARGET        = Image
@@ -247,7 +254,7 @@ TARGET        = Image
 first: all
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_mydialog.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../Image/Image.pro /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++/qmake.conf /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/spec_pre.prf \
@@ -413,6 +420,7 @@ Makefile: ../Image/Image.pro /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++/qma
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/qt_config.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/toolchain.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -600,6 +608,7 @@ Makefile: ../Image/Image.pro /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++/qma
 /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/qt_config.prf:
 /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++/qmake.conf:
 /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/exclusive_builds.prf:
 /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/toolchain.prf:
 /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/default_pre.prf:
@@ -638,9 +647,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Image/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Image/main.cpp ../Image/mainwindow.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Image/mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../Image/mainwindow.h ../Image/mydialog.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Image/main.cpp ../Image/mainwindow.cpp ../Image/mydialog.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Image/mainwindow.ui ../Image/mydialog.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -672,9 +681,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_mydialog.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_mydialog.cpp
 moc_mainwindow.cpp: /home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QMainWindow \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qmainwindow.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -792,16 +801,129 @@ moc_mainwindow.cpp: /home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QMainWindow 
 		/home/bruce/Qt5/5.10.1/gcc_64/bin/moc
 	/home/bruce/Qt5/5.10.1/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++ -I/mnt/hgfs/Practice/Practice/QT/Image -I/home/bruce/Qt5/5.10.1/gcc_64/include -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Image/mainwindow.h -o moc_mainwindow.cpp
 
+moc_mydialog.cpp: /home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QDialog \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qdialog.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qglobal.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qconfig.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qtcore-config.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsysinfo.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qlogging.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qflags.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qatomic.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qmutex.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qnumeric.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qversiontagging.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtgui-config.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qwidget.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qnamespace.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qobject.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstring.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qchar.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qbytearray.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qrefcount.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qarraydata.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringliteral.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringview.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qlist.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qalgorithms.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qiterator.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qpair.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringlist.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qregexp.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcoreevent.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qmetatype.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qobject_impl.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qmargins.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qrect.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsize.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qpoint.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpalette.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qcolor.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qrgb.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qrgba64.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qbrush.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qvector.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qmatrix.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpolygon.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qregion.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qdatastream.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qiodevice.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qline.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtransform.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpainterpath.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qimage.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpixelformat.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpixmap.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qshareddata.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qhash.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qfont.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qfontinfo.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qcursor.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qkeysequence.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qevent.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qvariant.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qmap.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qdebug.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qtextstream.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qlocale.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qset.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qurl.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qurlquery.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qfile.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qfiledevice.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qvector2d.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtouchdevice.h \
+		../Image/mydialog.h \
+		moc_predefs.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/bin/moc
+	/home/bruce/Qt5/5.10.1/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++ -I/mnt/hgfs/Practice/Practice/QT/Image -I/home/bruce/Qt5/5.10.1/gcc_64/include -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Image/mydialog.h -o moc_mydialog.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all: ui_mainwindow.h ui_mydialog.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
+	-$(DEL_FILE) ui_mainwindow.h ui_mydialog.h
 ui_mainwindow.h: ../Image/mainwindow.ui \
 		/home/bruce/Qt5/5.10.1/gcc_64/bin/uic
 	/home/bruce/Qt5/5.10.1/gcc_64/bin/uic ../Image/mainwindow.ui -o ui_mainwindow.h
+
+ui_mydialog.h: ../Image/mydialog.ui \
+		/home/bruce/Qt5/5.10.1/gcc_64/bin/uic
+	/home/bruce/Qt5/5.10.1/gcc_64/bin/uic ../Image/mydialog.ui -o ui_mydialog.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -1048,11 +1170,168 @@ mainwindow.o: ../Image/mainwindow.cpp ../Image/mainwindow.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/QTimer \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qtimer.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qbasictimer.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/QVariant \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QAction \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qaction.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qactiongroup.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QApplication \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qapplication.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qeventloop.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qguiapplication.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qinputmethod.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QButtonGroup \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QHeaderView \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qheaderview.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qstyleoption.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qvalidator.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qregularexpression.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qslider.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qabstractslider.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qstyle.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtabbar.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QMenuBar \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qmenubar.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qmenu.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QProgressBar \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qprogressbar.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QPushButton \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qpushbutton.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qabstractbutton.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QSlider \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QStatusBar \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qstatusbar.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QToolBar \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtoolbar.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QWidget \
+		../Image/mydialog.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QDialog \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Image/mainwindow.cpp
+
+mydialog.o: ../Image/mydialog.cpp ../Image/mydialog.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QDialog \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qdialog.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qglobal.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qconfig.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qtcore-config.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsysinfo.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qlogging.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qflags.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qatomic.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qmutex.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qnumeric.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qversiontagging.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtgui-config.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qwidget.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qnamespace.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qobject.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstring.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qchar.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qbytearray.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qrefcount.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qarraydata.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringliteral.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringalgorithms.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringview.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qlist.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qalgorithms.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qiterator.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qpair.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringlist.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qregexp.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcoreevent.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qmetatype.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qobject_impl.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qmargins.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qrect.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsize.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qpoint.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpalette.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qcolor.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qrgb.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qrgba64.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qbrush.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qvector.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qmatrix.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpolygon.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qregion.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qdatastream.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qiodevice.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qline.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtransform.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpainterpath.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qimage.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpixelformat.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qpixmap.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qshareddata.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qhash.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qfont.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qfontinfo.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qcursor.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qkeysequence.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qevent.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qvariant.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qmap.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qdebug.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qtextstream.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qlocale.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qset.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qurl.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qurlquery.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qfile.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qfiledevice.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qvector2d.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtouchdevice.h \
+		ui_mydialog.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mydialog.o ../Image/mydialog.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_mydialog.o: moc_mydialog.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mydialog.o moc_mydialog.cpp
 
 ####### Install
 

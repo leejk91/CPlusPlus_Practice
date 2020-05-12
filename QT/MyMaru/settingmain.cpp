@@ -17,12 +17,14 @@ SettingMain::~SettingMain()
 
 void SettingMain::on_pushButton_clicked() // ID setting
 {
-
+    id_page = new ID_Config(this);
+    id_page->show();
 }
 
 void SettingMain::on_pushButton_2_clicked() // IP Setting
 {
-
+    ip_page = new IP_config(this);
+    ip_page->show();
 }
 
 

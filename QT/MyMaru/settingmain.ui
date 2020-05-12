@@ -18,22 +18,46 @@
 {
 	background-color : #444444;
 
+}
+
+QLabel
+{
+	font: bold italic 25px;
+	color: white;
+}
+
+QPushButton
+{
+   border-radius: 10px;
+	padding: 2px; 
+	background-color: rgb(100,100,100);
+	font: bold italic 25px;
+	color: white;
+}
+
+QPushButton:pressed
+{
+   border-radius: 10px;
+	padding: 2px; 
+	background-color: rgb(100,100,100);
+	font: bold italic 25px;
+	color: black;
 }</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>10</y>
-     <width>81</width>
-     <height>16</height>
+     <x>310</x>
+     <y>30</y>
+     <width>131</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
     <string>관리자 메뉴</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>

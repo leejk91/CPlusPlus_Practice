@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'import.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.4
+** Created by: Qt User Interface Compiler version 5.10.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -186,21 +186,21 @@ public:
 
     void retranslateUi(QDialog *Import)
     {
-        Import->setWindowTitle(QApplication::translate("Import", "Dialog", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("Import", "PushButton", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("Import", "\354\266\224\352\260\200", Q_NULLPTR));
-        pushButton_3->setText(QApplication::translate("Import", "\354\210\230\354\240\225", Q_NULLPTR));
-        pushButton_4->setText(QApplication::translate("Import", "\354\202\255\354\240\234", Q_NULLPTR));
-        pushButton_5->setText(QApplication::translate("Import", "\353\213\253\352\270\260", Q_NULLPTR));
-        label->setText(QApplication::translate("Import", "\354\203\201\355\222\210\354\275\224\353\223\234", Q_NULLPTR));
-        label_2->setText(QApplication::translate("Import", "\354\203\201\355\222\210\353\252\205", Q_NULLPTR));
-        label_3->setText(QApplication::translate("Import", "\354\240\225\354\203\201\352\260\200 \352\270\260\352\260\204", Q_NULLPTR));
-        lineEdit_3->setText(QApplication::translate("Import", "0", Q_NULLPTR));
-        label_12->setText(QApplication::translate("Import", "\354\235\274", Q_NULLPTR));
-        label_10->setText(QApplication::translate("Import", "\354\203\201\355\222\210\352\260\200\352\262\251", Q_NULLPTR));
-        lineEdit_10->setText(QApplication::translate("Import", "0", Q_NULLPTR));
-        label_11->setText(QApplication::translate("Import", "\355\225\240\354\235\270 \352\260\200\352\262\251", Q_NULLPTR));
-        lineEdit_11->setText(QApplication::translate("Import", "0", Q_NULLPTR));
+        Import->setWindowTitle(QApplication::translate("Import", "Dialog", nullptr));
+        pushButton->setText(QApplication::translate("Import", "PushButton", nullptr));
+        pushButton_2->setText(QApplication::translate("Import", "\354\266\224\352\260\200", nullptr));
+        pushButton_3->setText(QApplication::translate("Import", "\354\210\230\354\240\225", nullptr));
+        pushButton_4->setText(QApplication::translate("Import", "\354\202\255\354\240\234", nullptr));
+        pushButton_5->setText(QApplication::translate("Import", "\353\213\253\352\270\260", nullptr));
+        label->setText(QApplication::translate("Import", "\354\203\201\355\222\210\354\275\224\353\223\234", nullptr));
+        label_2->setText(QApplication::translate("Import", "\354\203\201\355\222\210\353\252\205", nullptr));
+        label_3->setText(QApplication::translate("Import", "\354\240\225\354\203\201\352\260\200 \352\270\260\352\260\204", nullptr));
+        lineEdit_3->setText(QApplication::translate("Import", "0", nullptr));
+        label_12->setText(QApplication::translate("Import", "\354\235\274", nullptr));
+        label_10->setText(QApplication::translate("Import", "\354\203\201\355\222\210\352\260\200\352\262\251", nullptr));
+        lineEdit_10->setText(QApplication::translate("Import", "0", nullptr));
+        label_11->setText(QApplication::translate("Import", "\355\225\240\354\235\270 \352\260\200\352\262\251", nullptr));
+        lineEdit_11->setText(QApplication::translate("Import", "0", nullptr));
     } // retranslateUi
 
 };

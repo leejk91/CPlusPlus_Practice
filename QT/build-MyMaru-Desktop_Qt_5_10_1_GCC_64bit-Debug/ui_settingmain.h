@@ -27,7 +27,7 @@ class Ui_SettingMain
 {
 public:
     QLabel *label;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
     QPushButton *pushButton_2;
@@ -54,19 +54,43 @@ public:
 "{\n"
 "	background-color : #444444;\n"
 "\n"
+"}\n"
+"\n"
+"QLabel\n"
+"{\n"
+"	font: bold italic 25px;\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton\n"
+"{\n"
+"   border-radius: 10px;\n"
+"	padding: 2px; \n"
+"	background-color: rgb(100,100,100);\n"
+"	font: bold italic 25px;\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed\n"
+"{\n"
+"   border-radius: 10px;\n"
+"	padding: 2px; \n"
+"	background-color: rgb(100,100,100);\n"
+"	font: bold italic 25px;\n"
+"	color: black;\n"
 "}"));
         label = new QLabel(SettingMain);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(330, 10, 81, 16));
-        widget = new QWidget(SettingMain);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(10, 90, 721, 636));
-        verticalLayout = new QVBoxLayout(widget);
+        label->setGeometry(QRect(310, 30, 131, 51));
+        layoutWidget = new QWidget(SettingMain);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(10, 90, 721, 636));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        pushButton_2 = new QPushButton(widget);
+        pushButton_2 = new QPushButton(layoutWidget);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
@@ -77,7 +101,7 @@ public:
 
         horizontalLayout->addWidget(pushButton_2);
 
-        pushButton = new QPushButton(widget);
+        pushButton = new QPushButton(layoutWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
         sizePolicy.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
         pushButton->setSizePolicy(sizePolicy);
@@ -90,7 +114,7 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        pushButton_3 = new QPushButton(widget);
+        pushButton_3 = new QPushButton(layoutWidget);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
         sizePolicy.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
         pushButton_3->setSizePolicy(sizePolicy);
@@ -98,7 +122,7 @@ public:
 
         horizontalLayout_2->addWidget(pushButton_3);
 
-        pushButton_4 = new QPushButton(widget);
+        pushButton_4 = new QPushButton(layoutWidget);
         pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
         sizePolicy.setHeightForWidth(pushButton_4->sizePolicy().hasHeightForWidth());
         pushButton_4->setSizePolicy(sizePolicy);
@@ -111,7 +135,7 @@ public:
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        pushButton_7 = new QPushButton(widget);
+        pushButton_7 = new QPushButton(layoutWidget);
         pushButton_7->setObjectName(QStringLiteral("pushButton_7"));
         sizePolicy.setHeightForWidth(pushButton_7->sizePolicy().hasHeightForWidth());
         pushButton_7->setSizePolicy(sizePolicy);
@@ -119,7 +143,7 @@ public:
 
         horizontalLayout_4->addWidget(pushButton_7);
 
-        pushButton_8 = new QPushButton(widget);
+        pushButton_8 = new QPushButton(layoutWidget);
         pushButton_8->setObjectName(QStringLiteral("pushButton_8"));
         sizePolicy.setHeightForWidth(pushButton_8->sizePolicy().hasHeightForWidth());
         pushButton_8->setSizePolicy(sizePolicy);
@@ -132,7 +156,7 @@ public:
 
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
-        pushButton_9 = new QPushButton(widget);
+        pushButton_9 = new QPushButton(layoutWidget);
         pushButton_9->setObjectName(QStringLiteral("pushButton_9"));
         sizePolicy.setHeightForWidth(pushButton_9->sizePolicy().hasHeightForWidth());
         pushButton_9->setSizePolicy(sizePolicy);
@@ -140,7 +164,7 @@ public:
 
         horizontalLayout_5->addWidget(pushButton_9);
 
-        pushButton_10 = new QPushButton(widget);
+        pushButton_10 = new QPushButton(layoutWidget);
         pushButton_10->setObjectName(QStringLiteral("pushButton_10"));
         sizePolicy.setHeightForWidth(pushButton_10->sizePolicy().hasHeightForWidth());
         pushButton_10->setSizePolicy(sizePolicy);
@@ -153,7 +177,7 @@ public:
 
         horizontalLayout_6 = new QHBoxLayout();
         horizontalLayout_6->setObjectName(QStringLiteral("horizontalLayout_6"));
-        pushButton_11 = new QPushButton(widget);
+        pushButton_11 = new QPushButton(layoutWidget);
         pushButton_11->setObjectName(QStringLiteral("pushButton_11"));
         sizePolicy.setHeightForWidth(pushButton_11->sizePolicy().hasHeightForWidth());
         pushButton_11->setSizePolicy(sizePolicy);
@@ -161,7 +185,7 @@ public:
 
         horizontalLayout_6->addWidget(pushButton_11);
 
-        pushButton_12 = new QPushButton(widget);
+        pushButton_12 = new QPushButton(layoutWidget);
         pushButton_12->setObjectName(QStringLiteral("pushButton_12"));
         sizePolicy.setHeightForWidth(pushButton_12->sizePolicy().hasHeightForWidth());
         pushButton_12->setSizePolicy(sizePolicy);

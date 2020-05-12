@@ -18,7 +18,8 @@ Import::Import(QWidget *parent) :
     ui->label_10->setStyleSheet("QLabel{font: 12px; color:white}");
     ui->label_11->setStyleSheet("QLabel{font: 12px; color:white}");
 
-
+    additem("00A1","TEST",5,1000,800);
+    additem("00A2","TEST2",3,2000,1500);
 }
 
 Import::~Import()
@@ -29,4 +30,20 @@ Import::~Import()
 void Import::on_pushButton_5_clicked()
 {
     this->close();
+}
+
+void Import::additem(QString Code,QString Name,int date,int value,int sale_value) // 삽입
+{
+
+    qDebug() << Code << Name << date << value << sale_value;
+
+    QTreeWidgetItem *treeItem = new QTreeWidgetItem(ui->treeWidget);
+
+
+    treeItem->setText(0, Code);
+    treeItem->setText(1, Name);
+    treeItem->setText(2, QString::number(date));
+    treeItem->setText(3, QString::number(value));
+    treeItem->setText(4, QString::number(sale_value));
+
 }

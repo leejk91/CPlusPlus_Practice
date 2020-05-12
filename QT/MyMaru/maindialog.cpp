@@ -27,6 +27,11 @@ MainDialog::MainDialog(QWidget *parent) :
     mainview->resize(800,1280);
     //mainview->rotate(90);
     mainview->show();
+
+
+    ui->treeWidget->setColumnCount(2); // 항목 개수 설명
+    ui->treeWidget->setHeaderLabels(QStringList() <<  "상품명" << "개수" ); // 항목 이름 설정
+
 }
 
 MainDialog::~MainDialog()

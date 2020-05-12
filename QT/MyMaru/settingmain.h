@@ -4,6 +4,9 @@
 #include <QDialog>
 #include "import.h"
 #include "export_page.h"
+#include "ip_config.h"
+#include "id_config.h"
+
 
 namespace Ui {
 class SettingMain;
@@ -18,6 +21,9 @@ public:
     ~SettingMain();
     Import *import;
     export_page *exportpage;
+    IP_config *ip_page;
+    ID_Config *id_page;
+
 
 
 

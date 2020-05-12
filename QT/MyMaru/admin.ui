@@ -13,7 +13,28 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="verticalLayoutWidget">
+  <property name="styleSheet">
+   <string notr="true">QPushButton
+{
+	border-radius: 10px;
+	padding: 2px; 
+	background-color: rgb(100,100,100);
+	font: bold italic 25px;
+	color: white;
+}
+
+QLabel
+{
+  border-radius: 10px;
+	padding: 2px; 
+	background-color: rgb(100,100,100);
+	font: bold italic 25px;
+	color: white;
+}
+
+</string>
+  </property>
+  <widget class="QWidget" name="verticalWidget" native="true">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -21,6 +42,9 @@
      <width>731</width>
      <height>781</height>
     </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
@@ -56,47 +80,71 @@
      </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QPushButton" name="pushButton_2">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>135</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>1</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton_3">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>135</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>2</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton_4">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>135</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>3</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QWidget" name="" native="true">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="pushButton_2">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>135</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#pushButton_2
+{
+	border-radius: 10px;
+	padding: 2px; 
+	background-color: rgb(100,100,100);
+	font: bold italic 25px;
+	color: white;
+	
+}
+#pushButton:pressed
+{
+	border-radius: 10px;
+	padding: 2px;
+	background-image: url(:images/dog.png);
+	font: bold italic 10px;
+	color: black;
+}</string>
+         </property>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_3">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>135</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_4">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>135</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">

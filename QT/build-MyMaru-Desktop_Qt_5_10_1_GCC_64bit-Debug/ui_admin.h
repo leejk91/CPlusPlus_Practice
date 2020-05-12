@@ -27,10 +27,11 @@ QT_BEGIN_NAMESPACE
 class Ui_Admin
 {
 public:
-    QWidget *verticalLayoutWidget;
+    QWidget *verticalWidget;
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QLineEdit *lineEdit;
+    QWidget *widget;
     QHBoxLayout *horizontalLayout;
     QPushButton *pushButton_2;
     QPushButton *pushButton_3;
@@ -53,19 +54,38 @@ public:
         if (Admin->objectName().isEmpty())
             Admin->setObjectName(QStringLiteral("Admin"));
         Admin->resize(750, 800);
-        verticalLayoutWidget = new QWidget(Admin);
-        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(10, 10, 731, 781));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
+        Admin->setStyleSheet(QLatin1String("QPushButton\n"
+"{\n"
+"	border-radius: 10px;\n"
+"	padding: 2px; \n"
+"	background-color: rgb(100,100,100);\n"
+"	font: bold italic 25px;\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QLabel\n"
+"{\n"
+"  border-radius: 10px;\n"
+"	padding: 2px; \n"
+"	background-color: rgb(100,100,100);\n"
+"	font: bold italic 25px;\n"
+"	color: white;\n"
+"}\n"
+"\n"
+""));
+        verticalWidget = new QWidget(Admin);
+        verticalWidget->setObjectName(QStringLiteral("verticalWidget"));
+        verticalWidget->setGeometry(QRect(10, 10, 731, 781));
+        verticalWidget->setStyleSheet(QStringLiteral(""));
+        verticalLayout = new QVBoxLayout(verticalWidget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(verticalLayoutWidget);
+        label = new QLabel(verticalWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setAlignment(Qt::AlignCenter);
 
         verticalLayout->addWidget(label);
 
-        lineEdit = new QLineEdit(verticalLayoutWidget);
+        lineEdit = new QLineEdit(verticalWidget);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
@@ -78,44 +98,64 @@ public:
 
         verticalLayout->addWidget(lineEdit);
 
-        horizontalLayout = new QHBoxLayout();
+        widget = new QWidget(verticalWidget);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setStyleSheet(QStringLiteral(""));
+        horizontalLayout = new QHBoxLayout(widget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        pushButton_2 = new QPushButton(verticalLayoutWidget);
+        pushButton_2 = new QPushButton(widget);
         pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
         pushButton_2->setMinimumSize(QSize(0, 135));
+        pushButton_2->setStyleSheet(QLatin1String("#pushButton_2\n"
+"{\n"
+"	border-radius: 10px;\n"
+"	padding: 2px; \n"
+"	background-color: rgb(100,100,100);\n"
+"	font: bold italic 25px;\n"
+"	color: white;\n"
+"	\n"
+"}\n"
+"#pushButton:pressed\n"
+"{\n"
+"	border-radius: 10px;\n"
+"	padding: 2px;\n"
+"	background-image: url(:images/dog.png);\n"
+"	font: bold italic 10px;\n"
+"	color: black;\n"
+"}"));
 
         horizontalLayout->addWidget(pushButton_2);
 
-        pushButton_3 = new QPushButton(verticalLayoutWidget);
+        pushButton_3 = new QPushButton(widget);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
         pushButton_3->setMinimumSize(QSize(0, 135));
 
         horizontalLayout->addWidget(pushButton_3);
 
-        pushButton_4 = new QPushButton(verticalLayoutWidget);
+        pushButton_4 = new QPushButton(widget);
         pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
         pushButton_4->setMinimumSize(QSize(0, 135));
 
         horizontalLayout->addWidget(pushButton_4);
 
 
-        verticalLayout->addLayout(horizontalLayout);
+        verticalLayout->addWidget(widget);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        pushButton_5 = new QPushButton(verticalLayoutWidget);
+        pushButton_5 = new QPushButton(verticalWidget);
         pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
         pushButton_5->setMinimumSize(QSize(0, 135));
 
         horizontalLayout_2->addWidget(pushButton_5);
 
-        pushButton_6 = new QPushButton(verticalLayoutWidget);
+        pushButton_6 = new QPushButton(verticalWidget);
         pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
         pushButton_6->setMinimumSize(QSize(0, 135));
 
         horizontalLayout_2->addWidget(pushButton_6);
 
-        pushButton_7 = new QPushButton(verticalLayoutWidget);
+        pushButton_7 = new QPushButton(verticalWidget);
         pushButton_7->setObjectName(QStringLiteral("pushButton_7"));
         pushButton_7->setMinimumSize(QSize(0, 135));
 
@@ -126,19 +166,19 @@ public:
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        pushButton_8 = new QPushButton(verticalLayoutWidget);
+        pushButton_8 = new QPushButton(verticalWidget);
         pushButton_8->setObjectName(QStringLiteral("pushButton_8"));
         pushButton_8->setMinimumSize(QSize(0, 135));
 
         horizontalLayout_3->addWidget(pushButton_8);
 
-        pushButton_9 = new QPushButton(verticalLayoutWidget);
+        pushButton_9 = new QPushButton(verticalWidget);
         pushButton_9->setObjectName(QStringLiteral("pushButton_9"));
         pushButton_9->setMinimumSize(QSize(0, 135));
 
         horizontalLayout_3->addWidget(pushButton_9);
 
-        pushButton_10 = new QPushButton(verticalLayoutWidget);
+        pushButton_10 = new QPushButton(verticalWidget);
         pushButton_10->setObjectName(QStringLiteral("pushButton_10"));
         pushButton_10->setMinimumSize(QSize(0, 135));
 
@@ -149,19 +189,19 @@ public:
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        pushButton_11 = new QPushButton(verticalLayoutWidget);
+        pushButton_11 = new QPushButton(verticalWidget);
         pushButton_11->setObjectName(QStringLiteral("pushButton_11"));
         pushButton_11->setMinimumSize(QSize(0, 135));
 
         horizontalLayout_4->addWidget(pushButton_11);
 
-        pushButton_12 = new QPushButton(verticalLayoutWidget);
+        pushButton_12 = new QPushButton(verticalWidget);
         pushButton_12->setObjectName(QStringLiteral("pushButton_12"));
         pushButton_12->setMinimumSize(QSize(0, 135));
 
         horizontalLayout_4->addWidget(pushButton_12);
 
-        pushButton_13 = new QPushButton(verticalLayoutWidget);
+        pushButton_13 = new QPushButton(verticalWidget);
         pushButton_13->setObjectName(QStringLiteral("pushButton_13"));
         pushButton_13->setMinimumSize(QSize(0, 135));
 

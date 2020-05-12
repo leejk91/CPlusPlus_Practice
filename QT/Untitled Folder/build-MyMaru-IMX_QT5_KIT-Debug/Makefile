@@ -54,21 +54,25 @@ SOURCES       = ../MyMaru/main.cpp \
 		../MyMaru/maindialog.cpp \
 		../MyMaru/admin.cpp \
 		../MyMaru/settingmain.cpp \
-		../MyMaru/import.cpp qrc_images.cpp \
+		../MyMaru/import.cpp \
+		../MyMaru/export_page.cpp qrc_images.cpp \
 		moc_maindialog.cpp \
 		moc_admin.cpp \
 		moc_settingmain.cpp \
-		moc_import.cpp
+		moc_import.cpp \
+		moc_export_page.cpp
 OBJECTS       = main.o \
 		maindialog.o \
 		admin.o \
 		settingmain.o \
 		import.o \
+		export_page.o \
 		qrc_images.o \
 		moc_maindialog.o \
 		moc_admin.o \
 		moc_settingmain.o \
-		moc_import.o
+		moc_import.o \
+		moc_export_page.o
 DIST          = /opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/spec_pre.prf \
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/common/unix.conf \
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/common/linux.conf \
@@ -208,6 +212,7 @@ DIST          = /opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linu
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/qt_config.prf \
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++/qmake.conf \
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/spec_post.prf \
+		../MyMaru/.qmake.stash \
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/exclusive_builds.prf \
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/toolchain.prf \
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/default_pre.prf \
@@ -230,11 +235,13 @@ DIST          = /opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linu
 		../MyMaru/MyMaru.pro ../MyMaru/maindialog.h \
 		../MyMaru/admin.h \
 		../MyMaru/settingmain.h \
-		../MyMaru/import.h ../MyMaru/main.cpp \
+		../MyMaru/import.h \
+		../MyMaru/export_page.h ../MyMaru/main.cpp \
 		../MyMaru/maindialog.cpp \
 		../MyMaru/admin.cpp \
 		../MyMaru/settingmain.cpp \
-		../MyMaru/import.cpp
+		../MyMaru/import.cpp \
+		../MyMaru/export_page.cpp
 QMAKE_TARGET  = MyMaru
 DESTDIR       = 
 TARGET        = MyMaru
@@ -243,7 +250,7 @@ TARGET        = MyMaru
 first: all
 ####### Build rules
 
-$(TARGET): ui_maindialog.h ui_admin.h ui_settingmain.h ui_import.h $(OBJECTS)  
+$(TARGET): ui_maindialog.h ui_admin.h ui_settingmain.h ui_import.h ui_export_page.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../MyMaru/MyMaru.pro /opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++/qmake.conf /opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/spec_pre.prf \
@@ -385,6 +392,7 @@ Makefile: ../MyMaru/MyMaru.pro /opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/qt_config.prf \
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++/qmake.conf \
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/exclusive_builds.prf \
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/toolchain.prf \
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/default_pre.prf \
@@ -549,6 +557,7 @@ Makefile: ../MyMaru/MyMaru.pro /opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf
 /opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/qt_config.prf:
 /opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++/qmake.conf:
 /opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/exclusive_builds.prf:
 /opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/toolchain.prf:
 /opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/default_pre.prf:
@@ -589,9 +598,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../MyMaru/images.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../MyMaru/maindialog.h ../MyMaru/admin.h ../MyMaru/settingmain.h ../MyMaru/import.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../MyMaru/main.cpp ../MyMaru/maindialog.cpp ../MyMaru/admin.cpp ../MyMaru/settingmain.cpp ../MyMaru/import.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../MyMaru/maindialog.ui ../MyMaru/admin.ui ../MyMaru/settingmain.ui ../MyMaru/import.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../MyMaru/maindialog.h ../MyMaru/admin.h ../MyMaru/settingmain.h ../MyMaru/import.h ../MyMaru/export_page.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../MyMaru/main.cpp ../MyMaru/maindialog.cpp ../MyMaru/admin.cpp ../MyMaru/settingmain.cpp ../MyMaru/import.cpp ../MyMaru/export_page.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../MyMaru/maindialog.ui ../MyMaru/admin.ui ../MyMaru/settingmain.ui ../MyMaru/import.ui ../MyMaru/export_page.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -630,12 +639,13 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/data/dummy.cpp
 	arm-poky-linux-gnueabi-g++  -march=armv7-a -mfpu=neon -mfloat-abi=hard -mcpu=cortex-a9 --sysroot=/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi -pipe  -O2 -pipe -g -feliminate-unused-debug-types  --sysroot=/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_maindialog.cpp moc_admin.cpp moc_settingmain.cpp moc_import.cpp
+compiler_moc_header_make_all: moc_maindialog.cpp moc_admin.cpp moc_settingmain.cpp moc_import.cpp moc_export_page.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_maindialog.cpp moc_admin.cpp moc_settingmain.cpp moc_import.cpp
+	-$(DEL_FILE) moc_maindialog.cpp moc_admin.cpp moc_settingmain.cpp moc_import.cpp moc_export_page.cpp
 moc_maindialog.cpp: ../MyMaru/admin.h \
 		../MyMaru/settingmain.h \
 		../MyMaru/import.h \
+		../MyMaru/export_page.h \
 		../MyMaru/maindialog.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
@@ -643,12 +653,14 @@ moc_maindialog.cpp: ../MyMaru/admin.h \
 
 moc_admin.cpp: ../MyMaru/settingmain.h \
 		../MyMaru/import.h \
+		../MyMaru/export_page.h \
 		../MyMaru/admin.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
 	/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include ./moc_predefs.h -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/mnt/hgfs/Practice/Practice/QT/MyMaru -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I. -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/c++/7.3.0 -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/c++/7.3.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/c++/7.3.0/backward -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/7.3.0/include -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/gcc/arm-poky-linux-gnueabi/7.3.0/include -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/7.3.0/include-fixed -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include ../MyMaru/admin.h -o moc_admin.cpp
 
 moc_settingmain.cpp: ../MyMaru/import.h \
+		../MyMaru/export_page.h \
 		../MyMaru/settingmain.h \
 		moc_predefs.h \
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
@@ -659,11 +671,16 @@ moc_import.cpp: ../MyMaru/import.h \
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
 	/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include ./moc_predefs.h -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/mnt/hgfs/Practice/Practice/QT/MyMaru -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I. -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/c++/7.3.0 -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/c++/7.3.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/c++/7.3.0/backward -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/7.3.0/include -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/gcc/arm-poky-linux-gnueabi/7.3.0/include -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/7.3.0/include-fixed -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include ../MyMaru/import.h -o moc_import.cpp
 
+moc_export_page.cpp: ../MyMaru/export_page.h \
+		moc_predefs.h \
+		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc
+	/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/moc $(DEFINES) --include ./moc_predefs.h -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/qt5/mkspecs/linux-oe-g++ -I/mnt/hgfs/Practice/Practice/QT/MyMaru -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/qt5 -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/qt5/QtWidgets -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/qt5/QtGui -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/qt5/QtCore -I. -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/c++/7.3.0 -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/c++/7.3.0/arm-poky-linux-gnueabi -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include/c++/7.3.0/backward -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/7.3.0/include -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/lib/gcc/arm-poky-linux-gnueabi/7.3.0/include -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/lib/arm-poky-linux-gnueabi/gcc/arm-poky-linux-gnueabi/7.3.0/include-fixed -I/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/cortexa9hf-neon-poky-linux-gnueabi/usr/include ../MyMaru/export_page.h -o moc_export_page.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_maindialog.h ui_admin.h ui_settingmain.h ui_import.h
+compiler_uic_make_all: ui_maindialog.h ui_admin.h ui_settingmain.h ui_import.h ui_export_page.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_maindialog.h ui_admin.h ui_settingmain.h ui_import.h
+	-$(DEL_FILE) ui_maindialog.h ui_admin.h ui_settingmain.h ui_import.h ui_export_page.h
 ui_maindialog.h: ../MyMaru/maindialog.ui \
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/uic
 	/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/uic ../MyMaru/maindialog.ui -o ui_maindialog.h
@@ -680,6 +697,10 @@ ui_import.h: ../MyMaru/import.ui \
 		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/uic
 	/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/uic ../MyMaru/import.ui -o ui_import.h
 
+ui_export_page.h: ../MyMaru/export_page.ui \
+		/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/uic
+	/opt/fsl-imx-x11/4.9.88-2.0.0/sysroots/x86_64-pokysdk-linux/usr/bin/qt5/uic ../MyMaru/export_page.ui -o ui_export_page.h
+
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
@@ -693,30 +714,38 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 main.o: ../MyMaru/main.cpp ../MyMaru/maindialog.h \
 		../MyMaru/admin.h \
 		../MyMaru/settingmain.h \
-		../MyMaru/import.h
+		../MyMaru/import.h \
+		../MyMaru/export_page.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../MyMaru/main.cpp
 
 maindialog.o: ../MyMaru/maindialog.cpp ../MyMaru/maindialog.h \
 		../MyMaru/admin.h \
 		../MyMaru/settingmain.h \
 		../MyMaru/import.h \
+		../MyMaru/export_page.h \
 		ui_maindialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o maindialog.o ../MyMaru/maindialog.cpp
 
 admin.o: ../MyMaru/admin.cpp ../MyMaru/admin.h \
 		../MyMaru/settingmain.h \
 		../MyMaru/import.h \
+		../MyMaru/export_page.h \
 		ui_admin.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o admin.o ../MyMaru/admin.cpp
 
 settingmain.o: ../MyMaru/settingmain.cpp ../MyMaru/settingmain.h \
 		../MyMaru/import.h \
+		../MyMaru/export_page.h \
 		ui_settingmain.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o settingmain.o ../MyMaru/settingmain.cpp
 
 import.o: ../MyMaru/import.cpp ../MyMaru/import.h \
 		ui_import.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o import.o ../MyMaru/import.cpp
+
+export_page.o: ../MyMaru/export_page.cpp ../MyMaru/export_page.h \
+		ui_export_page.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o export_page.o ../MyMaru/export_page.cpp
 
 qrc_images.o: qrc_images.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_images.o qrc_images.cpp
@@ -732,6 +761,9 @@ moc_settingmain.o: moc_settingmain.cpp
 
 moc_import.o: moc_import.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_import.o moc_import.cpp
+
+moc_export_page.o: moc_export_page.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_export_page.o moc_export_page.cpp
 
 ####### Install
 

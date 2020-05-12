@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2020-05-11T15:41:54
+# Project created by QtCreator 2020-05-12T11:42:34
 #
 #-------------------------------------------------
 
@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = MyMaru
+TARGET = MyMaru2
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -26,30 +26,15 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        maindialog.cpp \
-    admin.cpp \
-    settingmain.cpp \
-    import.cpp \
-    export_page.cpp
+        mainwindow.cpp
 
 HEADERS += \
-        maindialog.h \
-    admin.h \
-    settingmain.h \
-    import.h \
-    export_page.h
+        mainwindow.h
 
 FORMS += \
-        maindialog.ui \
-    admin.ui \
-    settingmain.ui \
-    import.ui \
-    export_page.ui
+        mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-RESOURCES += \
-    images.qrc

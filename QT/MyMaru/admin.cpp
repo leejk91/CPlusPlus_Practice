@@ -1,7 +1,10 @@
 #include "admin.h"
 #include "ui_admin.h"
 
+
 QString password(10);
+QString setpassword(10);
+
 
 Admin::Admin(QWidget *parent) :
     QDialog(parent),
@@ -9,11 +12,13 @@ Admin::Admin(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->lineEdit->setEchoMode(QLineEdit::Password);
+    setpassword = "1234";
 }
 
 Admin::~Admin()
 {
     delete ui;
+
 }
 
 void Admin::on_pushButton_2_clicked()
@@ -86,4 +91,27 @@ void Admin::on_pushButton_12_clicked()
 void Admin::on_pushButton_13_clicked()
 {
 
+    if(passwordcheck(password)==true)
+    {
+
+        setting_menu = new SettingMain(this);
+        setting_menu -> show();
+        password = "";
+
+        qDebug() << "로그인 성공";
+    }
+    else {
+        qDebug() << "로그인 실패";
+    }
+}
+
+bool Admin::passwordcheck(QString password)
+{
+    if(password.toInt()==setpassword.toInt())
+    {
+        return true;
+    }
+    else {
+        return false;
+    }
 }

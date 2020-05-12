@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QDebug>
 #include "admin.h"
+#include <QGraphicsView>
 
 namespace Ui {
 class MainDialog;
@@ -16,8 +17,12 @@ class MainDialog : public QDialog
 public:
     explicit MainDialog(QWidget *parent = nullptr);
     ~MainDialog();
+
     Admin *admin;
 
+    QGraphicsView *mainview, *subview;
+    QGraphicsScene *mainscene, *subscene;
+    QGraphicsProxyWidget *mainproxy, *subproxy;
 
 
 private slots:

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'maindialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.10.1
+** Created by: Qt User Interface Compiler version 5.9.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -93,11 +93,11 @@ public:
 
     void retranslateUi(QDialog *MainDialog)
     {
-        MainDialog->setWindowTitle(QApplication::translate("MainDialog", "MainDialog", nullptr));
-        pushButton->setText(QApplication::translate("MainDialog", "Admin", nullptr));
+        MainDialog->setWindowTitle(QApplication::translate("MainDialog", "MainDialog", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("MainDialog", "Admin", Q_NULLPTR));
         label_3->setText(QString());
-        label_2->setText(QApplication::translate("MainDialog", "\354\203\201\355\222\210\354\235\204 \352\265\254\353\247\244 \355\225\230\354\213\234\353\240\244\353\251\264 \355\225\230\353\213\250\354\235\230 \352\267\270\353\246\274\352\263\274 \352\260\231\354\235\264", nullptr));
-        label->setText(QApplication::translate("MainDialog", "\354\213\240\354\232\251\354\271\264\353\223\234\353\245\274 \354\271\264\353\223\234\353\246\254\353\215\224\354\227\220 \353\260\200\354\226\264 \353\204\243\354\226\264\354\243\274\354\204\270\354\232\224.", nullptr));
+        label_2->setText(QApplication::translate("MainDialog", "\354\203\201\355\222\210\354\235\204 \352\265\254\353\247\244 \355\225\230\354\213\234\353\240\244\353\251\264 \355\225\230\353\213\250\354\235\230 \352\267\270\353\246\274\352\263\274 \352\260\231\354\235\264", Q_NULLPTR));
+        label->setText(QApplication::translate("MainDialog", "\354\213\240\354\232\251\354\271\264\353\223\234\353\245\274 \354\271\264\353\223\234\353\246\254\353\215\224\354\227\220 \353\260\200\354\226\264 \353\204\243\354\226\264\354\243\274\354\204\270\354\232\224.", Q_NULLPTR));
     } // retranslateUi
 
 };

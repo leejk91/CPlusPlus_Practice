@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <QVector>
+#include <QDebug>
+#include "settingmain.h"
 
 namespace Ui {
 class Admin;
@@ -15,6 +17,9 @@ class Admin : public QDialog
 public:
     explicit Admin(QWidget *parent = nullptr);
     ~Admin();
+    bool passwordcheck(QString password);
+
+    SettingMain *setting_menu;
 
 private slots:
     void on_pushButton_2_clicked();

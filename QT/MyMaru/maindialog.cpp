@@ -13,12 +13,26 @@ MainDialog::MainDialog(QWidget *parent) :
     ui->label->setStyleSheet("QLabel{font:bold 28px; color:white; background-color:#444444}");
     ui->label_2->setStyleSheet("QLabel{font:bold 28px; color:white; background-color:#444444}");
 
+    mainscene = new QGraphicsScene();
+    mainview = new QGraphicsView();
 
+    mainproxy = mainscene->addWidget(this);
+    mainview->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    mainview->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    mainview->setStyleSheet("QGraphicsView { border-style: none;}");
+    mainview->setWindowFlags(Qt::FramelessWindowHint);
+
+    mainview->setScene(mainscene);
+    mainview->setGeometry(geometry());
+    mainview->resize(800,1280);
+    //mainview->rotate(90);
+    mainview->show();
 }
 
 MainDialog::~MainDialog()
 {
     delete ui;
+
 }
 
 

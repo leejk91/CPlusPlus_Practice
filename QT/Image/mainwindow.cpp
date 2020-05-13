@@ -27,7 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
     sstimer = new QTimer;
     connect(sstimer, SIGNAL(timeout()), this, SLOT(on_sstimeout()));
 
-
+    mainview = new QGraphicsView();
 
 
 

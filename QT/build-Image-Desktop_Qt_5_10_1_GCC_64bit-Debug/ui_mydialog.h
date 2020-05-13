@@ -15,18 +15,35 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QScrollArea>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_MyDialog
 {
 public:
+    QScrollArea *scrollArea;
+    QWidget *scrollAreaWidgetContents;
+    QLabel *label;
 
     void setupUi(QDialog *MyDialog)
     {
         if (MyDialog->objectName().isEmpty())
             MyDialog->setObjectName(QStringLiteral("MyDialog"));
         MyDialog->resize(400, 300);
+        scrollArea = new QScrollArea(MyDialog);
+        scrollArea->setObjectName(QStringLiteral("scrollArea"));
+        scrollArea->setGeometry(QRect(20, 20, 351, 261));
+        scrollArea->setWidgetResizable(true);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 349, 259));
+        label = new QLabel(scrollAreaWidgetContents);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(140, 120, 67, 17));
+        scrollArea->setWidget(scrollAreaWidgetContents);
 
         retranslateUi(MyDialog);
 
@@ -36,6 +53,7 @@ public:
     void retranslateUi(QDialog *MyDialog)
     {
         MyDialog->setWindowTitle(QApplication::translate("MyDialog", "Dialog", nullptr));
+        label->setText(QApplication::translate("MyDialog", "TextLabel", nullptr));
     } // retranslateUi
 
 };

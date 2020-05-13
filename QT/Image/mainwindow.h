@@ -6,6 +6,8 @@
 #include <QTimer>
 #include <unistd.h>
 #include "mydialog.h"
+#include <QGraphicsView>
+
 
 namespace Ui {
 class MainWindow;

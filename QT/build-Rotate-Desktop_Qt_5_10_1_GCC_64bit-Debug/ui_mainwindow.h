@@ -14,9 +14,11 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
@@ -26,13 +28,11 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
-    QAction *actionNow;
-    QAction *actionOpen;
-    QAction *actionSave;
-    QAction *actionPrint;
     QWidget *centralWidget;
+    QLabel *label_2;
+    QPushButton *pushButton;
+    QLineEdit *lineEdit;
     QMenuBar *menuBar;
-    QMenu *menuFile;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -40,23 +40,22 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(400, 300);
-        actionNow = new QAction(MainWindow);
-        actionNow->setObjectName(QStringLiteral("actionNow"));
-        actionOpen = new QAction(MainWindow);
-        actionOpen->setObjectName(QStringLiteral("actionOpen"));
-        actionSave = new QAction(MainWindow);
-        actionSave->setObjectName(QStringLiteral("actionSave"));
-        actionPrint = new QAction(MainWindow);
-        actionPrint->setObjectName(QStringLiteral("actionPrint"));
+        MainWindow->resize(300, 400);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        label_2 = new QLabel(centralWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(110, 260, 271, 51));
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(10, 310, 89, 25));
+        lineEdit = new QLineEdit(centralWidget);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        lineEdit->setGeometry(QRect(110, 310, 171, 25));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 400, 22));
-        menuFile = new QMenu(menuBar);
-        menuFile->setObjectName(QStringLiteral("menuFile"));
+        menuBar->setGeometry(QRect(0, 0, 300, 22));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -64,12 +63,6 @@ public:
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);
-
-        menuBar->addAction(menuFile->menuAction());
-        menuFile->addAction(actionNow);
-        menuFile->addAction(actionOpen);
-        menuFile->addAction(actionSave);
-        menuFile->addAction(actionPrint);
 
         retranslateUi(MainWindow);
 
@@ -79,11 +72,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
-        actionNow->setText(QApplication::translate("MainWindow", "New", nullptr));
-        actionOpen->setText(QApplication::translate("MainWindow", "Open", nullptr));
-        actionSave->setText(QApplication::translate("MainWindow", "Save", nullptr));
-        actionPrint->setText(QApplication::translate("MainWindow", "Print", nullptr));
-        menuFile->setTitle(QApplication::translate("MainWindow", "File", nullptr));
+        label_2->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
+        pushButton->setText(QApplication::translate("MainWindow", "Rotate", nullptr));
     } // retranslateUi
 
 };

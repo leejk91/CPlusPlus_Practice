@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../Image -I. -I/home/bruce/Qt5/5.10.1/gcc_64/include -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++
+INCPATH       = -I../Image -I. -I/home/bruce/Qt5/5.10.1/gcc_64/include -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtPrintSupport -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/bruce/Qt5/5.10.1/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -38,7 +38,7 @@ DISTNAME      = Image1.0.0
 DISTDIR = /mnt/hgfs/Practice/Practice/QT/build-Image-Desktop_Qt_5_10_1_GCC_64bit-Debug/.tmp/Image1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/bruce/Qt5/5.10.1/gcc_64/lib
-LIBS          = $(SUBLIBS) -L/home/bruce/Qt5/5.10.1/gcc_64/lib -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -L/home/bruce/Qt5/5.10.1/gcc_64/lib -lQt5PrintSupport -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -441,6 +441,7 @@ Makefile: ../Image/Image.pro /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++/qma
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/yacc.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/lex.prf \
 		../Image/Image.pro \
+		/home/bruce/Qt5/5.10.1/gcc_64/lib/libQt5PrintSupport.prl \
 		/home/bruce/Qt5/5.10.1/gcc_64/lib/libQt5Widgets.prl \
 		/home/bruce/Qt5/5.10.1/gcc_64/lib/libQt5Gui.prl \
 		/home/bruce/Qt5/5.10.1/gcc_64/lib/libQt5Core.prl
@@ -629,6 +630,7 @@ Makefile: ../Image/Image.pro /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++/qma
 /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/yacc.prf:
 /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/lex.prf:
 ../Image/Image.pro:
+/home/bruce/Qt5/5.10.1/gcc_64/lib/libQt5PrintSupport.prl:
 /home/bruce/Qt5/5.10.1/gcc_64/lib/libQt5Widgets.prl:
 /home/bruce/Qt5/5.10.1/gcc_64/lib/libQt5Gui.prl:
 /home/bruce/Qt5/5.10.1/gcc_64/lib/libQt5Core.prl:
@@ -796,10 +798,13 @@ moc_mainwindow.cpp: /home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QMainWindow 
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/QTimer \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qtimer.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qbasictimer.h \
+		../Image/mydialog.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QDialog \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qdialog.h \
 		../Image/mainwindow.h \
 		moc_predefs.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/bin/moc
-	/home/bruce/Qt5/5.10.1/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++ -I/mnt/hgfs/Practice/Practice/QT/Image -I/home/bruce/Qt5/5.10.1/gcc_64/include -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Image/mainwindow.h -o moc_mainwindow.cpp
+	/home/bruce/Qt5/5.10.1/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++ -I/mnt/hgfs/Practice/Practice/QT/Image -I/home/bruce/Qt5/5.10.1/gcc_64/include -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtPrintSupport -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Image/mainwindow.h -o moc_mainwindow.cpp
 
 moc_mydialog.cpp: /home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QDialog \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qdialog.h \
@@ -908,7 +913,7 @@ moc_mydialog.cpp: /home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QDialog \
 		../Image/mydialog.h \
 		moc_predefs.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/bin/moc
-	/home/bruce/Qt5/5.10.1/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++ -I/mnt/hgfs/Practice/Practice/QT/Image -I/home/bruce/Qt5/5.10.1/gcc_64/include -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Image/mydialog.h -o moc_mydialog.cpp
+	/home/bruce/Qt5/5.10.1/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++ -I/mnt/hgfs/Practice/Practice/QT/Image -I/home/bruce/Qt5/5.10.1/gcc_64/include -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtPrintSupport -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui -I/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Image/mydialog.h -o moc_mydialog.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1048,6 +1053,9 @@ main.o: ../Image/main.cpp ../Image/mainwindow.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/QTimer \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qtimer.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qbasictimer.h \
+		../Image/mydialog.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QDialog \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qdialog.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QApplication \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qapplication.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1170,6 +1178,9 @@ mainwindow.o: ../Image/mainwindow.cpp ../Image/mainwindow.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/QTimer \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qtimer.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qbasictimer.h \
+		../Image/mydialog.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QDialog \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qdialog.h \
 		ui_mainwindow.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/QVariant \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QAction \
@@ -1200,9 +1211,10 @@ mainwindow.o: ../Image/mainwindow.cpp ../Image/mainwindow.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qstyle.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtabbar.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QMenu \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qmenu.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QMenuBar \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qmenubar.h \
-		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qmenu.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QProgressBar \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qprogressbar.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QPushButton \
@@ -1213,10 +1225,7 @@ mainwindow.o: ../Image/mainwindow.cpp ../Image/mainwindow.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qstatusbar.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QToolBar \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtoolbar.h \
-		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QWidget \
-		../Image/mydialog.h \
-		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QDialog \
-		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qdialog.h
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Image/mainwindow.cpp
 
 mydialog.o: ../Image/mydialog.cpp ../Image/mydialog.h \
@@ -1324,7 +1333,39 @@ mydialog.o: ../Image/mydialog.cpp ../Image/mydialog.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qfiledevice.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qvector2d.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qtouchdevice.h \
-		ui_mydialog.h
+		ui_mydialog.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/QVariant \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QAction \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qaction.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qicon.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qactiongroup.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QApplication \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qapplication.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qeventloop.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qguiapplication.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qinputmethod.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QButtonGroup \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QHeaderView \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qheaderview.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qframe.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qstyleoption.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qvalidator.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qregularexpression.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qslider.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qabstractslider.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qstyle.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtabbar.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtabwidget.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qrubberband.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mydialog.o ../Image/mydialog.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

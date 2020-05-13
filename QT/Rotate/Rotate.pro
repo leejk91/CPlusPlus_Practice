@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2020-05-12T19:32:45
+# Project created by QtCreator 2020-05-13T10:21:02
 #
 #-------------------------------------------------
 
@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Qfile_Tuto
+TARGET = Rotate
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -38,6 +38,3 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-RESOURCES += \
-    txt.qrc

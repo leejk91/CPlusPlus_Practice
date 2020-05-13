@@ -51,9 +51,11 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../Qfile_Tuto/main.cpp \
-		../Qfile_Tuto/mainwindow.cpp moc_mainwindow.cpp
+		../Qfile_Tuto/mainwindow.cpp qrc_txt.cpp \
+		moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
+		qrc_txt.o \
 		moc_mainwindow.o
 DIST          = /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/common/unix.conf \
@@ -218,6 +220,7 @@ DIST          = /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/qt_config.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/spec_post.prf \
+		../Qfile_Tuto/.qmake.stash \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/toolchain.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -413,6 +416,7 @@ Makefile: ../Qfile_Tuto/Qfile_Tuto.pro /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/lin
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/qt_config.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/toolchain.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/default_pre.prf \
@@ -433,6 +437,7 @@ Makefile: ../Qfile_Tuto/Qfile_Tuto.pro /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/lin
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/yacc.prf \
 		/home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/lex.prf \
 		../Qfile_Tuto/Qfile_Tuto.pro \
+		../Qfile_Tuto/txt.qrc \
 		/home/bruce/Qt5/5.10.1/gcc_64/lib/libQt5Widgets.prl \
 		/home/bruce/Qt5/5.10.1/gcc_64/lib/libQt5Gui.prl \
 		/home/bruce/Qt5/5.10.1/gcc_64/lib/libQt5Core.prl
@@ -600,6 +605,7 @@ Makefile: ../Qfile_Tuto/Qfile_Tuto.pro /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/lin
 /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/qt_config.prf:
 /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/linux-g++/qmake.conf:
 /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/exclusive_builds.prf:
 /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/toolchain.prf:
 /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/default_pre.prf:
@@ -620,6 +626,7 @@ Makefile: ../Qfile_Tuto/Qfile_Tuto.pro /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/lin
 /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/yacc.prf:
 /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/lex.prf:
 ../Qfile_Tuto/Qfile_Tuto.pro:
+../Qfile_Tuto/txt.qrc:
 /home/bruce/Qt5/5.10.1/gcc_64/lib/libQt5Widgets.prl:
 /home/bruce/Qt5/5.10.1/gcc_64/lib/libQt5Gui.prl:
 /home/bruce/Qt5/5.10.1/gcc_64/lib/libQt5Core.prl:
@@ -637,6 +644,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents ../Qfile_Tuto/txt.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /home/bruce/Qt5/5.10.1/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Qfile_Tuto/mainwindow.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../Qfile_Tuto/main.cpp ../Qfile_Tuto/mainwindow.cpp $(DISTDIR)/
@@ -664,8 +672,15 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_txt.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_txt.cpp
+qrc_txt.cpp: ../Qfile_Tuto/txt.qrc \
+		/home/bruce/Qt5/5.10.1/gcc_64/bin/rcc \
+		../Qfile_Tuto/error.txt \
+		../Qfile_Tuto/Dog3.png
+	/home/bruce/Qt5/5.10.1/gcc_64/bin/rcc -name txt ../Qfile_Tuto/txt.qrc -o qrc_txt.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
@@ -807,7 +822,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -1042,8 +1057,49 @@ mainwindow.o: ../Qfile_Tuto/mainwindow.cpp ../Qfile_Tuto/mainwindow.h \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/QString \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/QDebug \
 		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/QTextStream \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/QVariant \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QAction \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qaction.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qactiongroup.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QApplication \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qapplication.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qeventloop.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qguiapplication.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qinputmethod.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QButtonGroup \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QHeaderView \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qheaderview.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qframe.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qstyleoption.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtGui/qvalidator.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtCore/qregularexpression.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qslider.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qabstractslider.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qstyle.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtabbar.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QMenuBar \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qmenubar.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qmenu.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QStatusBar \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qstatusbar.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QToolBar \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/qtoolbar.h \
+		/home/bruce/Qt5/5.10.1/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Qfile_Tuto/mainwindow.cpp
+
+qrc_txt.o: qrc_txt.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_txt.o qrc_txt.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

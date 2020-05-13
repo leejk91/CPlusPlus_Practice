@@ -6,6 +6,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    QString filename = ":/new/prefix1/error.txt";
+    write(filename);
+    read(filename);
 }
 
 MainWindow::~MainWindow()

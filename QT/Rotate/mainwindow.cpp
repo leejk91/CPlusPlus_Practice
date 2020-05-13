@@ -8,11 +8,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    mainscene = new QGraphicsScene();
-    mainview = new QGraphicsView();
-    mainproxy = mainscene->addWidget(this);
-
+    mainscene = new QGraphicsScene(); // item들을 저장하는 객체
+    mainview = new QGraphicsView(); // 보는 화면
     mainview->setScene(mainscene);
+
+    mainproxy = mainscene->addWidget(this); //
+
     mainview->setGeometry(geometry());
     mainview->resize(400,300);
     mainview->rotate(90);
@@ -59,5 +60,13 @@ void MainWindow::on_pushButton_clicked()
         A = true;
 
     }
-    mainview->show();
+    //mainview->show();
+}
+
+void MainWindow::on_actionNew_triggered()
+{
+    dia_log = new Dialog(this);
+    form = new Form(this);
+    //dia_log->show();
+    form->show();
 }

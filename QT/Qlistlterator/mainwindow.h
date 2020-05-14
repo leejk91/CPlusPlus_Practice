@@ -14,8 +14,6 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    int checksum(unsigned char *data, int len);
-
 
 private:
     Ui::MainWindow *ui;

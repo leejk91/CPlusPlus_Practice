@@ -19,9 +19,11 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    QGraphicsView *mainview;
-    QGraphicsScene *mainscene;
-    QGraphicsProxyWidget *mainproxy;
+    QGraphicsView *mainview, *subview;
+    QGraphicsScene *mainscene, *subscene;
+    QGraphicsProxyWidget *mainproxy, *subproxy;
+
+    //ShowSubDialog(QWidget *widget);
 
 private slots:
     void A_Time_out();
@@ -30,13 +32,13 @@ private slots:
 
 
     void on_actionNew_triggered();
+    //void ShowSubDialog(QWidget *widget);
 
 private:
     Ui::MainWindow *ui;
     QTimer *timer;
 
     Dialog *dia_log;
-    Form *form;
 
 };
 

@@ -3,13 +3,6 @@
 
 #include <QDialog>
 
-#include <QGraphicsView>
-#include <QGraphicsScene>
-#include <QGraphicsItem>
-
-#include <QWheelEvent>
-#include <QKeyEvent>
-
 namespace Ui {
 class Dialog;
 }
@@ -21,8 +14,6 @@ class Dialog : public QDialog
 public:
     explicit Dialog(QWidget *parent = nullptr);
     ~Dialog();
-
-
 
 private slots:
     void on_pushButton_clicked();

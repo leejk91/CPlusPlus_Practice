@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2020-05-13T10:21:02
+# Project created by QtCreator 2020-05-14T14:39:56
 #
 #-------------------------------------------------
 
@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Rotate
+TARGET = SerialEx
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -26,22 +26,15 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
-    dialog.cpp
+        mainwindow.cpp
 
 HEADERS += \
-        mainwindow.h \
-    dialog.h
+        mainwindow.h
 
 FORMS += \
-        mainwindow.ui \
-    dialog.ui \
-    form.ui
+        mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
-
-RESOURCES += \
-    images.qrc

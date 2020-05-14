@@ -66,7 +66,25 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::on_actionNew_triggered()
 {
     dia_log = new Dialog(this);
-    form = new Form(this);
-    //dia_log->show();
-    form->show();
+    ShowSubDialog(dia_log);
 }
+
+/*
+void MainWindow::ShowSubDialog(QWidget *widget)
+{
+    subscene = new QGraphicsScene();
+    subview = new QGraphicsView();
+
+    subproxy = subscene->addWidget(widget);
+    subview->setStyleSheet("QGraphicsView { border-style: none;}");
+    subview->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    subview->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    subview->setWindowFlags(Qt::FramelessWindowHint);
+    subview->setScene(subscene);
+
+    subview->setGeometry(geometry());
+    subview->resize(300,400);
+    subview->rotate(90);
+    subview->show();
+}
+*/

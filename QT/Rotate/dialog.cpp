@@ -8,12 +8,6 @@ Dialog::Dialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    mainscene2 = new QGraphicsScene(); //
-    mainview2 = new QGraphicsView(); //
-    mainview2->setScene(mainscene2);
-
-    mainproxy2 = mainscene2->addWidget(this); // ???
-
 }
 
 Dialog::~Dialog()
@@ -23,5 +17,5 @@ Dialog::~Dialog()
 
 void Dialog::on_pushButton_clicked()
 {
-    mainview2->rotate(90);
+
 }

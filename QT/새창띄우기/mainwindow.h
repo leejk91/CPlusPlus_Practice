@@ -33,6 +33,7 @@ private:
     Ui::MainWindow *ui;
 
     Dialog *Dia_log; //새창
+    void ShowSubDialog(QWidget *widget);
 
 
 

@@ -8,11 +8,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     scene = new QGraphicsScene(this);
-    ui->graphicsView->setScene(scene);
+    mainview = new QGraphicsView();
+    //ui->graphicsView->setScene(scene);
+    mainproxy = scene->addWidget(this);
+    mainview->setScene(scene);
 
-    QBrush greenBrush(Qt::green);
+     QBrush greenBrush(Qt::green);
     QBrush blueBrush(Qt::blue);
     QPen outlinepen(Qt::black);
+
     outlinepen.setWidth(2);
 
     rectangle = scene->addRect(100,0,80,100,outlinepen,blueBrush);
@@ -21,9 +25,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     text = scene->addText("AAAAAAAA",QFont("Arial",20));
 
+
+   // ui->pushButton->
     text->setFlag(QGraphicsItem::ItemIsMovable);
+    ellipse->setFlag(QGraphicsItem::ItemIsMovable);
+    rectangle->setFlag(QGraphicsItem::ItemIsMovable);
 
 
+    mainview->show();
 }
 
 MainWindow::~MainWindow()
@@ -33,5 +42,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-
+    ellipse->setRotation(45);
+    ellipse->setPos(50,50);
 }

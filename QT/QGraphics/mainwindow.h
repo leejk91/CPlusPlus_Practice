@@ -24,10 +24,12 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
+    QGraphicsView *mainview;
     QGraphicsScene* scene;
     QGraphicsEllipseItem *ellipse;
     QGraphicsRectItem *rectangle;
     QGraphicsTextItem *text;
+    QGraphicsProxyWidget *mainproxy;
 
 };
 

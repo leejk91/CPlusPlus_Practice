@@ -28,7 +28,7 @@
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -76,14 +76,14 @@
        <item>
         <widget class="QPushButton" name="pushButton_3">
          <property name="text">
-          <string>PushButton</string>
+          <string>창열기2</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_4">
          <property name="text">
-          <string>PushButton</string>
+          <string>창열기3</string>
          </property>
         </widget>
        </item>

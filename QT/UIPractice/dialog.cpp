@@ -19,7 +19,7 @@ Dialog::Dialog(QWidget *parent) :
     ui->graphicsView->setScene(scene);
 #endif
 
-#if 0
+#if 1
     mainscene = new QGraphicsScene(); // 아이템 들을 저장하는 객체
     mainview = new QGraphicsView(); // 내가 보는 화면
     mainproxy = mainscene->addWidget(this); // 지우면 화면 틀과 화면이 분리됨. mainscene으로 설정하는 듯함.

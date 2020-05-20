@@ -42,10 +42,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">#groubbox
-{
-	background-image
-}</string>
+     <string notr="true"/>
     </property>
     <property name="title">
      <string>GroupBox</string>
@@ -71,11 +68,15 @@
        <height>48</height>
       </size>
      </property>
+     <property name="styleSheet">
+      <string notr="true">#label
+{
+	border-image: url(:/new/ui_img/images/dog.png);
+	
+}</string>
+     </property>
      <property name="text">
       <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="ui_img.qrc">:/new/ui_img/images/dog.png</pixmap>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton">
@@ -173,8 +174,6 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="ui_img.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

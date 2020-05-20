@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/new/adimage">
-        <file>images/20200519_194704.png</file>
+        <file>images/insert.png</file>
+        <file>images/logo.jpg</file>
     </qresource>
 </RCC>

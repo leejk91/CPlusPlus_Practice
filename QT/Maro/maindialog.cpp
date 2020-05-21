@@ -146,8 +146,8 @@ void MainDialog::ShowSubDialog(QWidget *widget)
 {
     subscene = new QGraphicsScene();
     subview = new QGraphicsView();
-
     subproxy = subscene->addWidget(widget);
+
     subview->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff); // 세로스크롤바 제거
     subview->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff); // 가로스크롤바 제거
     subview->setStyleSheet("QGraphicsView { border-style: none;}"); // 테두리 없음

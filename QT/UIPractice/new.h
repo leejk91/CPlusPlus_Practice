@@ -20,7 +20,7 @@ public:
     ~New();
     QGraphicsView *thirdview;
     QGraphicsScene *thirdscene;
-    QGraphicsProxyWidget *thirdproxy;
+
     void ShowThirdDialog(QDialog *widget);
 
 private slots:
@@ -29,6 +29,7 @@ private slots:
     void on_pushButton_2_clicked();
 
     void on_pushButton_3_clicked();
+    void on_Dialog_closed();
 
 private:
     Ui::New *ui;

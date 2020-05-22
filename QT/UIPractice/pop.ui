@@ -1,17 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>Pop</class>
- <widget name="Pop" class="QDialog">
+ <widget class="QDialog" name="Pop">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>535</width>
+    <height>365</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>330</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>PushButton</string>
+   </property>
+  </widget>
+  <widget class="QTreeWidget" name="treeWidget">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>20</y>
+     <width>461</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QTreeWidget
+{
+	font : 10pt
+}	
+
+QHeaderView
+{
+	background-color : blue;
+	font : 20pt
+}
+
+</string>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Sunken</enum>
+   </property>
+   <attribute name="headerVisible">
+    <bool>false</bool>
+   </attribute>
+   <attribute name="headerCascadingSectionResizes">
+    <bool>false</bool>
+   </attribute>
+   <column>
+    <property name="text">
+     <string>상품</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>가격</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>재고</string>
+    </property>
+   </column>
+   <item>
+    <property name="text">
+     <string>코카콜라</string>
+    </property>
+    <property name="text">
+     <string>5000</string>
+    </property>
+    <property name="text">
+     <string>10</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>쿠쿠다스</string>
+    </property>
+    <property name="text">
+     <string>100</string>
+    </property>
+    <property name="text">
+     <string>2</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>우유</string>
+    </property>
+    <property name="text">
+     <string>500</string>
+    </property>
+    <property name="text">
+     <string>50</string>
+    </property>
+   </item>
+  </widget>
  </widget>
  <resources/>
  <connections/>

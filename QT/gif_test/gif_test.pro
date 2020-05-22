@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2020-05-13T13:30:39
+# Project created by QtCreator 2020-05-22T08:55:36
 #
 #-------------------------------------------------
 
@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = QGraphics
+TARGET = gif_test
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -26,15 +26,18 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        dialog.cpp
 
 HEADERS += \
-        mainwindow.h
+        dialog.h
 
 FORMS += \
-        mainwindow.ui
+        dialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    a.qrc

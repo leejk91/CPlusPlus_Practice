@@ -30,7 +30,8 @@ void New::on_pushButton_3_clicked()
 {
     Pop *dlg = new Pop();
 
-    //connect(dlg,SIGNAL(DialogClosed()), this, SLOT(on_subDialog_closed()));
+    connect(dlg,SIGNAL(digclose()), this, SLOT(on_Dialog_closed()));
+
     emit DialogClosed();
 
     ShowThirdDialog(dlg);
@@ -41,7 +42,8 @@ void New::ShowThirdDialog(QDialog *widget)
     thirdscene = new QGraphicsScene();
     thirdview = new QGraphicsView();
 
-    thirdproxy = thirdscene->addWidget(widget);
+    //thirdproxy = thirdscene->addWidget(widget);
+    thirdscene->addWidget(widget);
 
     thirdview->setScene(thirdscene);
     thirdview->setGeometry(geometry()); //  actual Display size
@@ -49,4 +51,9 @@ void New::ShowThirdDialog(QDialog *widget)
 
 
     thirdview->show();
+}
+
+void New::on_Dialog_closed()
+{
+    thirdview->close();
 }

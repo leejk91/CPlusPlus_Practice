@@ -22,7 +22,6 @@ public:
 
     QGraphicsView *mainview, *subview;
     QGraphicsScene *mainscene, *subscene;
-    QGraphicsProxyWidget *mainproxy, *subproxy;
     void ShowSubDialog(QDialog *widget);
 
 

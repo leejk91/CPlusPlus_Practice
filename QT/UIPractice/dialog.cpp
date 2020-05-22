@@ -22,7 +22,7 @@ Dialog::Dialog(QWidget *parent) :
 #if 1
     mainscene = new QGraphicsScene(); // 아이템 들을 저장하는 객체
     mainview = new QGraphicsView(); // 내가 보는 화면
-    mainproxy = mainscene->addWidget(this); // 지우면 화면 틀과 화면이 분리됨. mainscene으로 설정하는 듯함.
+    mainscene->addWidget(this);  // 지우면 화면 틀과 화면이 분리됨. mainscene으로 설정하는 듯함.
 
     mainview->setScene(mainscene); // 지우면 틀만 나옴.
     mainview->setGeometry(geometry()); // 위치
@@ -66,7 +66,8 @@ void Dialog::ShowSubDialog(QDialog *widget)
     subscene = new QGraphicsScene();
     subview = new QGraphicsView();
 
-    subproxy = subscene->addWidget(widget);
+    //subproxy = subscene->addWidget(widget);
+    subscene->addWidget(widget);
 
     subview->setScene(subscene);
     subview->setGeometry(geometry()); //  actual Display size
